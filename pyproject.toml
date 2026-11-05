@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fde-webhook-engine"
+version = "1.0.0"
+description = "Webhook receiving and delivery engine: HMAC verification, replay protection, per-tenant subscriptions, signed fan-out delivery with exponential-backoff retries, idempotency keys and a dead-letter queue, against local fixture receivers."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "fastapi",
+    "pydantic",
+    "uvicorn",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx"]
+
+[tool.setuptools.packages.find]
+include = ["fde_webhook_engine*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
